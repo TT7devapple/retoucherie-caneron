@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retoucherie Caneron</title>
+<meta name="description" content="Retoucherie Caneron, 42 rue Raymond du Temple à Vincennes. Ourlets, ajustements, réparations et couture sur mesure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F4F2F5;
+    --surface: #FFFFFF;
+    --ink: #22202A;
+    --muted: #625E6C;
+    --line: #D8D4DD;
+    --indigo: #3B3FA0;
+    --indigo-ink: #FFFFFF;
+    --tape: #E8B931;
+    --tape-ink: #22202A;
+    --ok: #2E6B45;
+    --closed: #9A3A3A;
+    --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --body: "Figtree", "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #17161C;
+      --surface: #211F28;
+      --ink: #ECEAF0;
+      --muted: #A9A4B3;
+      --line: #36333F;
+      --indigo: #A3A7F2;
+      --indigo-ink: #17161C;
+      --tape: #E0B43A;
+      --tape-ink: #1B1A12;
+      --ok: #85C89C;
+      --closed: #E59494;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #17161C;
+    --surface: #211F28;
+    --ink: #ECEAF0;
+    --muted: #A9A4B3;
+    --line: #36333F;
+    --indigo: #A3A7F2;
+    --indigo-ink: #17161C;
+    --tape: #E0B43A;
+    --tape-ink: #1B1A12;
+    --ok: #85C89C;
+    --closed: #E59494;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 400 1rem/1.65 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .wrap { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.02; margin: 0; text-wrap: balance; }
+  em { font-style: italic; }
+  .label { font: 500 .74rem/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  .proto { background: var(--ink); color: var(--ground); font: 500 .74rem/1.4 var(--mono); letter-spacing: .06em; text-align: center; padding: 8px 16px; }
+
+  /* En-tête */
+  header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--ground) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+  .brand { text-decoration: none; display: flex; align-items: baseline; gap: 8px; }
+  .brand b { font: 700 1.5rem/1 var(--display); }
+  .brand span { font: 500 .7rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  nav.links { display: flex; gap: 24px; }
+  nav.links a { text-decoration: none; font-weight: 500; font-size: .95rem; color: var(--muted); }
+  nav.links a:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--ink); background: var(--ink); color: var(--ground); font: 600 .95rem/1 var(--body); padding: 12px 20px; text-decoration: none; cursor: pointer; border-radius: 999px; transition: transform .15s ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.accent { background: var(--indigo); border-color: var(--indigo); color: var(--indigo-ink); }
+  @media (max-width: 760px) { nav.links { display: none; } .brand span { display: none; } header.top .btn { padding: 10px 14px; font-size: .88rem; } }
+
+  /* Annonce déménagement */
+  .moved { background: var(--tape); color: var(--tape-ink); }
+  .moved .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; padding-block: 10px; font-size: .95rem; text-align: center; }
+  .moved strong { font-weight: 600; }
+  .moved s { opacity: .7; }
+
+  /* Hero */
+  .hero { padding-block: clamp(44px, 7vw, 92px) 0; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: end; }
+  .hero h1 { font-size: clamp(3rem, 8.4vw, 6.6rem); letter-spacing: -.02em; }
+  .hero h1 em { color: var(--indigo); }
+  .hero .lede { font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 40ch; margin: 22px 0 28px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .card-now { background: var(--surface); border: 1px solid var(--line); padding: 22px 22px 20px; display: grid; gap: 14px; font-size: .95rem; }
+  .card-now .row { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+  .card-now .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .card-now .row > span:first-child { color: var(--muted); }
+  .card-now .row > span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .status.open { color: var(--ok); }
+  .status.shut { color: var(--closed); }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  /* Mètre ruban */
+  .tape { margin-top: clamp(44px, 6vw, 72px); height: 64px; background: var(--tape); color: var(--tape-ink); position: relative; overflow: hidden; transform: rotate(-1.2deg); margin-inline: -24px; box-shadow: 0 10px 24px -18px rgba(0,0,0,.5); }
+  .tape::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 100%;
+    background:
+      repeating-linear-gradient(90deg, var(--tape-ink) 0 1.5px, transparent 1.5px 50px) 0 0 / 100% 26px no-repeat,
+      repeating-linear-gradient(90deg, var(--tape-ink) 0 1px, transparent 1px 25px) 0 0 / 100% 16px no-repeat,
+      repeating-linear-gradient(90deg, var(--tape-ink) 0 1px, transparent 1px 5px) 0 0 / 100% 9px no-repeat;
+    opacity: .85;
+  }
+  .tape .nums { position: absolute; left: 0; bottom: 8px; display: flex; white-space: nowrap; font: 500 .8rem/1 var(--mono); font-variant-numeric: tabular-nums; }
+  .tape .nums span { width: 50px; padding-left: 4px; flex: none; }
+  .tape .nums span.red { color: #B3261E; font-weight: 600; }
+
+  section.block { padding-block: clamp(60px, 8vw, 108px); }
+  .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: end; margin-bottom: 40px; }
+  .sec-head h2 { font-size: clamp(2.3rem, 5vw, 3.8rem); letter-spacing: -.015em; }
+  .sec-head h2 em { color: var(--indigo); }
+  .sec-head p { margin: 0; color: var(--muted); max-width: 46ch; justify-self: end; }
+  @media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; } .sec-head p { justify-self: start; } }
+
+  /* Carnet de retouches */
+  .menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+  .item { padding-block: 20px; border-bottom: 1px solid var(--line); }
+  .item .line { display: flex; align-items: baseline; gap: 12px; }
+  .item h3 { font-size: 1.5rem; }
+  .item .dots { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-5px); min-width: 20px; }
+  .item .for { font: 500 .74rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--indigo); white-space: nowrap; }
+  .item p { margin: 6px 0 0; color: var(--muted); max-width: 48ch; }
+  .note { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--muted); font-size: .95rem; }
+  .note b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 760px) { .menu { grid-template-columns: 1fr; } .item .for { white-space: normal; text-align: right; } }
+
+  /* Essayage : vraie séquence */
+  .fitting { background: var(--surface); border-block: 1px solid var(--line); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; counter-reset: s; }
+  .steps li { counter-increment: s; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--indigo); color: var(--indigo); font: 500 1.3rem/1 var(--display); margin-bottom: 18px; }
+  .steps h3 { font-size: 1.6rem; margin-bottom: 8px; }
+  .steps p { margin: 0; color: var(--muted); max-width: 34ch; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+  /* Avis */
+  .reviews { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+  .score { font: 500 clamp(5rem, 13vw, 8.5rem)/.85 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .score small { font-size: .35em; color: var(--muted); letter-spacing: 0; }
+  .score-meta { margin-top: 16px; }
+  .stars { color: var(--tape); font-size: 1.2rem; letter-spacing: .15em; }
+  .quotes { display: grid; gap: 0; }
+  .quotes figure { margin: 0; padding-block: 24px; border-bottom: 1px solid var(--line); }
+  .quotes figure:first-child { padding-top: 0; }
+  .quotes blockquote { margin: 0; font: italic 500 clamp(1.35rem, 2.6vw, 1.85rem)/1.3 var(--display); text-wrap: pretty; }
+  .quotes figcaption { margin-top: 10px; font: 400 .78rem/1.4 var(--mono); color: var(--muted); letter-spacing: .04em; }
+  @media (max-width: 760px) { .reviews { grid-template-columns: 1fr; } }
+
+  /* Horaires + accès */
+  .visit { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); }
+  .hours-wrap { overflow-x: auto; }
+  .hours { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: .92rem; font-variant-numeric: tabular-nums; }
+  .hours td { padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .hours td + td { text-align: right; padding-left: 16px; }
+  .hours tr.today td { color: var(--indigo); font-weight: 500; }
+  .hours tr.today td:first-child::after { content: " ·\00a0aujourd'hui"; font-size: .72rem; letter-spacing: .06em; }
+  .hours tr.off td + td { color: var(--muted); }
+  .contact { display: grid; gap: 26px; align-content: start; }
+  .contact .big { font: 500 clamp(1.9rem, 3.6vw, 2.6rem)/1.08 var(--display); }
+  .contact .old { margin-top: 8px; color: var(--muted); font-size: .9rem; }
+  .phone-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .phone { font: 500 clamp(1.4rem, 3vw, 1.8rem)/1 var(--mono); user-select: all; font-variant-numeric: tabular-nums; }
+  .copy { font: 500 .8rem/1 var(--mono); background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 8px 12px; cursor: pointer; border-radius: 999px; }
+  .copy:hover { border-color: var(--ink); }
+  @media (max-width: 760px) { .visit { grid-template-columns: 1fr; } }
+
+  footer.site { border-top: 1px solid var(--line); padding-block: 28px 40px; }
+  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; color: var(--muted); font-size: .88rem; }
+  footer.site b { color: var(--ink); font: 700 1.15rem/1 var(--display); }
+
+  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+  @keyframes unroll { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .hero h1, .hero .lede, .ctas, .card-now { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .lede { animation-delay: .06s; } .ctas { animation-delay: .12s; } .card-now { animation-delay: .18s; }
+  .tape { animation: unroll 1.1s cubic-bezier(.6,.05,.2,1) .2s both; }
+</style>
+</head>
+<body>
+
+<div class="proto">Maquette — proposition de site pour la Retoucherie Caneron</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>Caneron</b><span>Retoucherie · Vincennes</span></a>
+    <nav class="links" aria-label="Navigation principale">
+      <a href="#retouches">Retouches</a>
+      <a href="#avis">Avis</a>
+      <a href="#venir">Horaires &amp; accès</a>
+    </nav>
+    <a class="btn" href="tel:+33143742473">01 43 74 24 73</a>
+  </div>
+</header>
+
+<div class="moved" role="note">
+  <div class="wrap">
+    <strong>Nouvelle adresse depuis septembre 2023&nbsp;:</strong>
+    <span>42 rue Raymond du Temple</span>
+    <span><s>15 rue Robert Giraudineau</s></span>
+  </div>
+</div>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="label" style="margin-bottom:18px">Couture &amp; retouches · Vincennes</div>
+        <h1>Vos vêtements, <em>à votre mesure.</em></h1>
+        <p class="lede">Ourlets, ajustements, réparations et créations sur mesure. Un travail soigné et rapide, à deux pas du château de Vincennes.</p>
+        <div class="ctas">
+          <a class="btn accent" href="#venir">Horaires &amp; adresse</a>
+          <a class="btn ghost" href="#retouches">Voir les retouches</a>
+        </div>
+      </div>
+      <aside class="card-now" aria-label="En ce moment">
+        <div class="row"><span>En ce moment</span><span class="status" id="status">—</span></div>
+        <div class="row"><span>Adresse</span><span>42 rue Raymond du Temple<br>94300 Vincennes</span></div>
+        <div class="row"><span>Téléphone</span><span>01 43 74 24 73</span></div>
+        <div class="row"><span>Avis clients</span><span><span class="stars" aria-hidden="true">★★★★★</span> 4,7/5</span></div>
+      </aside>
+    </div>
+    <div class="tape" aria-hidden="true"><div class="nums" id="nums"></div></div>
+  </section>
+
+  <section class="block" id="retouches">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="label" style="margin-bottom:14px">Le carnet de retouches</div>
+          <h2>Du simple ourlet <em>au sur-mesure</em></h2>
+        </div>
+        <p>Chaque vêtement est différent&nbsp;: le tarif et le délai vous sont indiqués en boutique, après avoir vu la pièce.</p>
+      </div>
+
+      <div class="menu">
+        <div class="item">
+          <div class="line"><h3>Ourlets</h3><span class="dots"></span><span class="for">Pantalons · jeans · jupes</span></div>
+          <p>Raccourcir ou rallonger, en conservant l'ourlet d'origine sur les jeans si vous le souhaitez.</p>
+        </div>
+        <div class="item">
+          <div class="line"><h3>Ajustements</h3><span class="dots"></span><span class="for">Taille · longueur · cintrage</span></div>
+          <p>Reprendre une taille, cintrer une chemise, ajuster des manches&nbsp;: le vêtement tombe enfin juste.</p>
+        </div>
+        <div class="item">
+          <div class="line"><h3>Réparations</h3><span class="dots"></span><span class="for">Accrocs · coutures · doublures</span></div>
+          <p>Coutures défaites, trous, doublures usées&nbsp;: on répare pour que vos pièces durent.</p>
+        </div>
+        <div class="item">
+          <div class="line"><h3>Fermetures éclair</h3><span class="dots"></span><span class="for">Pantalons · vestes · manteaux</span></div>
+          <p>Remplacement de fermetures cassées, boutons et pressions.</p>
+        </div>
+        <div class="item">
+          <div class="line"><h3>Rideaux &amp; linge</h3><span class="dots"></span><span class="for">Ourlets de rideaux</span></div>
+          <p>Mise à longueur de rideaux et voilages, finitions nettes pour votre intérieur.</p>
+        </div>
+        <div class="item">
+          <div class="line"><h3>Création sur mesure</h3><span class="dots"></span><span class="for">Sur rendez-vous</span></div>
+          <p>Une pièce imaginée pour vous, de la prise de mesures à l'essayage final.</p>
+        </div>
+      </div>
+      <div class="note"><b>Sans rendez-vous pour les retouches.</b> Venez avec le vêtement et, si possible, les chaussures que vous porterez avec.</div>
+    </div>
+  </section>
+
+  <section class="block fitting">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="label" style="margin-bottom:14px">Comment ça se passe</div>
+          <h2>Un essayage, <em>et c'est parti</em></h2>
+        </div>
+        <p>Pour un résultat juste, tout commence par une prise de mesure sur vous.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>L'essayage</h3><p>Vous passez le vêtement en boutique&nbsp;: on épingle, on marque à la craie, on mesure.</p></li>
+        <li><h3>Le devis</h3><p>Prix et date de retrait annoncés sur place, avant de commencer quoi que ce soit.</p></li>
+        <li><h3>Le retrait</h3><p>Vous récupérez votre vêtement repassé, prêt à porter. Un doute&nbsp;? On réessaie ensemble.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="avis">
+    <div class="wrap reviews">
+      <div>
+        <div class="label" style="margin-bottom:18px">Ce qu'en disent les clients</div>
+        <div class="score">4,7<small>/5</small></div>
+        <div class="score-meta"><span class="stars" aria-label="Note moyenne 4,7 sur 5">★★★★★</span><div class="label" style="margin-top:8px">11 avis · ZoneCouture</div></div>
+      </div>
+      <div class="quotes">
+        <figure>
+          <blockquote>«&nbsp;Travail très soigné et rapide.&nbsp;»</blockquote>
+          <figcaption>Avis client</figcaption>
+        </figure>
+        <figure>
+          <blockquote>«&nbsp;Très sympathique, et les ourlets de rideaux sont parfaitement réalisés.&nbsp;»</blockquote>
+          <figcaption>Avis client</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="venir" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="label" style="margin-bottom:14px">Horaires &amp; accès</div>
+          <h2>Passez <em>à la boutique</em></h2>
+        </div>
+        <p>Rue Raymond du Temple, entre le château et le centre-ville, à quelques minutes du métro Château de Vincennes.</p>
+      </div>
+      <div class="visit">
+        <div class="hours-wrap">
+          <table class="hours" aria-label="Horaires d'ouverture">
+            <tbody id="hours">
+              <tr data-d="1"><td>Lundi</td><td>12:00 – 19:30</td></tr>
+              <tr data-d="2"><td>Mardi</td><td>08:30 – 13:00 · 14:30 – 19:30</td></tr>
+              <tr data-d="3"><td>Mercredi</td><td>08:30 – 13:00 · 14:30 – 19:30</td></tr>
+              <tr data-d="4"><td>Jeudi</td><td>08:30 – 13:00 · 14:30 – 19:30</td></tr>
+              <tr data-d="5"><td>Vendredi</td><td>08:30 – 13:00 · 14:30 – 19:30</td></tr>
+              <tr data-d="6"><td>Samedi</td><td>09:00 – 13:00 · 14:30 – 19:00</td></tr>
+              <tr data-d="0" class="off"><td>Dimanche</td><td>Fermé</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="contact">
+          <div>
+            <div class="label" style="margin-bottom:10px">Adresse</div>
+            <div class="big">42 rue Raymond du Temple<br>94300 Vincennes</div>
+            <div class="old">Anciennement au 15 rue Robert Giraudineau.</div>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:10px">Téléphone</div>
+            <div class="phone-row">
+              <span class="phone" id="phone">01 43 74 24 73</span>
+              <button class="copy" id="copy" type="button">Copier</button>
+            </div>
+          </div>
+          <div><a class="btn accent" href="https://www.google.com/maps/search/?api=1&query=42+rue+Raymond+du+Temple+94300+Vincennes" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <b>Retoucherie Caneron</b>
+    <span>42 rue Raymond du Temple, 94300 Vincennes · 01 43 74 24 73</span>
+    <span>SARL Caneron · RCS Créteil 848 913 141</span>
+  </div>
+</footer>
+
+<script>
+  // Graduations du mètre ruban (1 cm = 50 px)
+  (function () {
+    var n = document.getElementById('nums'), html = '';
+    for (var i = 1; i <= 80; i++) html += '<span' + (i % 10 === 0 ? ' class="red"' : '') + '>' + i + '</span>';
+    n.innerHTML = html;
+  })();
+
+  // Ouvert / fermé, à l'heure de Paris
+  (function () {
+    var slots = {
+      0: [],
+      1: [[720, 1170]],
+      2: [[510, 780], [870, 1170]], 3: [[510, 780], [870, 1170]],
+      4: [[510, 780], [870, 1170]], 5: [[510, 780], [870, 1170]],
+      6: [[540, 780], [870, 1140]]
+    };
+    var p = {};
+    try {
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
+        .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+    } catch (e) {}
+    var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    var now = new Date();
+    var d = p.weekday in map ? map[p.weekday] : now.getDay();
+    var m = p.hour ? (+p.hour % 24) * 60 + +p.minute : now.getHours() * 60 + now.getMinutes();
+    function hm(v) { var h = Math.floor(v / 60), mm = v % 60; return h + 'h' + (mm ? (mm < 10 ? '0' : '') + mm : ''); }
+
+    var s = document.getElementById('status'), cur = null;
+    slots[d].forEach(function (r) { if (m >= r[0] && m < r[1]) cur = r; });
+    if (cur) { s.className = 'status open'; s.textContent = 'Ouvert · jusqu\'à ' + hm(cur[1]); }
+    else {
+      var txt = null;
+      slots[d].forEach(function (r) { if (!txt && m < r[0]) txt = 'rouvre à ' + hm(r[0]); });
+      if (!txt) {
+        var names = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+        for (var k = 1; k <= 7; k++) {
+          var nd = (d + k) % 7;
+          if (slots[nd].length) { txt = 'ouvre ' + (k === 1 ? 'demain' : names[nd]) + ' à ' + hm(slots[nd][0][0]); break; }
+        }
+      }
+      s.className = 'status shut'; s.textContent = 'Fermé · ' + txt;
+    }
+    var row = document.querySelector('#hours tr[data-d="' + d + '"]');
+    if (row) row.classList.add('today');
+  })();
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this, el = document.getElementById('phone');
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copier'; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      done('Sélectionné');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent).then(function () { done('Copié'); }, fallback);
+    else fallback();
+  });
+</script>
+</body>
+</html>
